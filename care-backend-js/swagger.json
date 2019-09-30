@@ -1,0 +1,174 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "car-api with NodeJS",
+        "description": "application car-api une application qui expose des sevices pour les voitures en location ou en vente",
+        "license": {
+            "name": "ZAGHIR",
+            "url": "http://localhost"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/api/mobile",
+    "tags": [
+        {
+            "name": "Produits",
+            "description": "Api for produits in the system"
+        },
+        {
+            "name": "Clients",
+            "description": "Api for clients in the system"
+        },
+        {
+            "name": "Commandes",
+            "description": "Api for commandes in the system"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "application/xml"
+    ],
+    "produces": [
+        "application/json",
+        "application/xml"
+    ],
+    "paths": {
+        "/produits": {
+            "get": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Get all produits system",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/definitions/Produit"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Get all client system",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                }
+            }
+        },
+        "/commandes": {
+            "get": {
+                "tags": [
+                    "Commandes"
+                ],
+                "summary": "Get all Commande system",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/definitions/Commande"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "Produit": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "nom": {
+                    "type": "string"
+                },
+                "detail": {
+                    "type": "string"
+                }
+            }
+        },
+        "Client": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "nom": {
+                    "type": "string"
+                },
+                "prenom": {
+                    "type": "string"
+                },
+                "adresse": {
+                    "type": "string"
+                },
+                "fixe": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "string"
+                },
+                "gpsLatitude": {
+                    "type": "number"
+                },
+                "gpsLongitude": {
+                    "type": "number"
+                }
+            }
+        },
+        "ProduitComander": {
+            "type": "object",
+            "properties": {
+                "produit": {
+                    "type": "Produit"
+                },
+                "quantite": {
+                    "type": "number"
+                }
+            }
+        },
+        "Commande": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number"
+                },
+                "client": {
+                    "type": "Client"
+                },
+                "produitsCommander": {
+                    "type":"Array",
+                    "items":"$ref/definitions/ProduitsCommander"
+                },
+                "status": {
+                    "type": "string"
+                }                
+            }
+        }
+    }
+}
