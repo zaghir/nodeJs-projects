@@ -1,0 +1,23 @@
+.imageVoiture{
+	width:50%;
+	float:left;	
+}
+
+.imageVoiture  path{
+	fill : #c4ced2;
+	stroke:#000 ;
+	stroke-width:1px;
+	transition: fill 0.3s
+}
+
+.imageVoiture  path:hover {
+	fill : #3538d2;
+}
+.imageVoiture  .problemeStyle path {
+	fill : #FF3333;
+}
+.donnesVoiture{
+	flot:right;
+	width : 50% 
+}
+
